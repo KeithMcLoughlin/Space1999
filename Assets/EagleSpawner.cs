@@ -37,9 +37,18 @@ public class EagleSpawner : MonoBehaviour {
             //instantiate left follower
             GameObject leftFollowerEagleShip = GameObject.Instantiate<GameObject>(prefab);
             leftFollowerEagleShip.transform.position = leftFollowerPosition;
+            OffsetPursue leftFollowPursue = leftFollowerEagleShip.AddComponent<OffsetPursue>();
+            //pursue leader
+            leftFollowPursue.target = new Vector3(0, 0, 1000);
+            leftFollowPursue.leader = leaderEagleShip.GetComponent<Boid>();
+
             //instantiate right follower
             GameObject rightFollowerEagleShip = GameObject.Instantiate<GameObject>(prefab);
             rightFollowerEagleShip.transform.position = rightFollowerPosition;
+            OffsetPursue rightFollowPursue = rightFollowerEagleShip.AddComponent<OffsetPursue>();
+            //pursue leader
+            rightFollowPursue.target = new Vector3(0, 0, 1000);
+            rightFollowPursue.leader = leaderEagleShip.GetComponent<Boid>();
         }
         
     }
