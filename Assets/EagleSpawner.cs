@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Assets;
 
 public class EagleSpawner : MonoBehaviour {
 
@@ -13,6 +14,9 @@ public class EagleSpawner : MonoBehaviour {
         //instantiaite leader
         GameObject leaderEagleShip = GameObject.Instantiate<GameObject>(prefab);
         leaderEagleShip.transform.position = transform.position;
+        Seek leaderSeek = leaderEagleShip.AddComponent<Seek>();
+        //seek target position 1000 units ahead of leader
+        leaderSeek.target = new Vector3(0, 0, 1000);
         
         for (int i = 1; i < followers + 1; i++)
         {
@@ -39,14 +43,4 @@ public class EagleSpawner : MonoBehaviour {
         }
         
     }
-
-    // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 }
